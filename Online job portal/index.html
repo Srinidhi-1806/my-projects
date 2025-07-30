@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+    <script src="./logic.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="Container">
+        <div class="menu-main-div">
+            <div class="Web-name">
+                <h1>CareerBridge</h1>
+            </div>
+            <div class="menu-options">
+                <div id="home">Home</div>
+                <div id="Sign-in">Sign-in</div>
+                <div id="register">Register</div>
+            </div>
+        </div>
+        <div class="Quatos">
+            <h1 id="main-quatos">Find your dream job now</h1>
+            <p id="sub-quatos">The future depends on what you do today.</p>
+        </div>
+        <div class="body-container">
+            <div class="main-job-div">
+                <div class="job">
+                    <div class="job-details">
+                        <div class="row1">
+                            <span>
+                                <h2>Software Developer</h2>
+                            </span> 
+                        </div>
+                        <div class="row2">
+                            <h4><a class="company-name" href="https://www.infosys.com/">Infosys</a></h4>
+                        </div>
+                        <div class="row3">
+                            <h3>2-4 Yrs</h3>
+                            <span>&#x1F4CD;</span>
+                            <h3>Bengaluru</h3>
+                        </div>
+                        <div class="row4">
+                            <h3>Skills : Python, Django, SQL</h3>
+                        </div>
+                        <div class="apply">
+                            <button id="apply-1" onclick = getApplyJob(this)>
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="row1">
+                            <span>
+                                <h2>Data Analyst</h2>
+                            </span> 
+                        </div>
+                        <div class="row2">
+                            <h4><a class="company-name" href="https://www.tcs.com/" target="_blank">TCS</a></h4>
+                        </div>
+                        <div class="row3">
+                            <h3>1-3 Yrs</h3>
+                            <span>&#x1F4CD;</span>
+                            <h3>Hyderabad</h3>
+                        </div>
+                        <div class="row4">
+                            <h3>Skills : Excel, SQL, Tableau</h3>
+                        </div>
+                        <div class="apply">
+                            <button>
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="row1">
+                            <span>
+                                <h2>Network Administrator</h2>
+                            </span> 
+                        </div>
+                        <div class="row2">
+                            <h4><a class="company-name" href="https://www.wipro.com/">Wipro</a></h4>
+                        </div>
+                        <div class="row3">
+                            <h3>3-5 Yrs</h3>
+                            <span>&#x1F4CD;</span>
+                            <h3>Noida</h3>
+                        </div>
+                        <div class="row4">
+                            <h3>Skills : Networking, Firewall, Linux</h3>
+                        </div>
+                        <div class="apply">
+                            <button>
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="row1">
+                            <span>
+                                <h2>Junior Engineeer</h2>
+                            </span> 
+                        </div>
+                        <div class="row2">
+                            <h4><a class="company-name" href="https://www.wipro.com/">Vaken Technology</a></h4>
+                        </div>
+                        <div class="row3">
+                            <h3>3-5 Yrs</h3>
+                            <span>&#x1F4CD;</span>
+                            <h3>Trichy</h3>
+                        </div>
+                        <div class="row4">
+                            <h3>Skills : Java, Javascript, Linux</h3>
+                        </div>
+                        <div class="apply">
+                            <button>
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                       
+                    <div class="job-details">
+                        <div class="row1">
+                            <span>
+                                <h2>ETL Developer</h2>
+                            </span> 
+                        </div>
+                        <div class="row2">
+                            <h4><a class="company-name" href="https://www.wipro.com/">Cognizant</a></h4>
+                        </div>
+                        <div class="row3">
+                            <h3>2-10 Yrs</h3>
+                            <span>&#x1F4CD;</span>
+                            <h3>Coimbatore</h3>
+                        </div>
+                        <div class="row4">
+                            <h3>Skills : Azure, Aws, Linux</h3>
+                        </div>
+                        <div class="apply">
+                            <button>
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    
+                                        
+                </div>
+                <!-- <div class="image">
+                    <img src="./istockphoto-1352606416-1024x1024.jpg" alt="">
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Your existing code remains exactly the same until just before </body> -->
+
+</div>
+</div>
+</div>
+<!-- Add this just before </body> -->
+<div id="applicationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Apply for <span id="modalJobTitle"></span></h2>
+      <h3>at <span id="modalCompanyName"></span></h3>
+      <form id="applicationForm">
+        <div class="form-group">
+          <label for="applicantName">Full Name*</label>
+          <input type="text" id="applicantName" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="applicantEmail">Email*</label>
+          <input type="email" id="applicantEmail" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="applicantPhone">Phone*</label>
+          <input type="tel" id="applicantPhone"  min="10"required>
+        </div>
+        <div class="form-group">
+  <label for="applicantYOE">Years of Experience*</label>
+  <input type="number" id="applicantYOE" min="0" required>
+</div>
+        
+        <div class="form-group">
+          <label for="applicantResume">Resume (PDF)*</label>
+          <input type="file" id="applicantResume" accept=".pdf" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="applicantCover">Cover Letter</label>
+          <textarea id="applicantCover" rows="4"></textarea>
+        </div>
+        
+        <button type="button" onclick="submitApplication()">Submit Application</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
